@@ -20,7 +20,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "allowSyntheticDefaultImports": true,
+
+    /* Added for automatic React import */
+    "types": ["react", "react-dom"],
+    "jsxImportSource": "react"
   },
   "include": ["src"]
 }

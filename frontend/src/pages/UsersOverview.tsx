@@ -1,8 +1,8 @@
+import {FC, useState} from "react";
 import {List} from "../components/List.tsx";
 import {Button} from "../components";
-import {useState} from "react";
 
-export const UsersOverview = () => {
+export const UsersOverview: FC = () => {
     const [users, setUsers] = useState<any[]>([])
 
     const getUsers = async () => {
