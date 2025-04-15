@@ -15,7 +15,6 @@ export const Button: FC<ButtonProps> = ({ text, onClick, variant = "primary" }) 
     return (
         <button
             onClick={onClick}
-            style={styles[variant]}
         >
             {text}
         </button>

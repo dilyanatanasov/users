@@ -1,29 +1,26 @@
 import './App.css'
-import {BrowserRouter, NavLink, Route, Routes} from "react-router-dom";
-import {AddUser, Contact, Home, NotFound, UsersOverview} from "./pages";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {AddUser, Contact, EditUser, Home, NotFound, UsersOverview} from "./pages";
+import {Navigation} from "./components";
 
 function App() {
 
 
-  return (
-    <BrowserRouter>
-      <nav>
-        <ul>
-          <li><NavLink to={'/'}>Home</NavLink></li>
-          <li><NavLink to={'/users'}>Users</NavLink></li>
-          <li><NavLink to={'/add-user'}>Add User</NavLink></li>
-          <li><NavLink to={'/contact'}>Contact</NavLink></li>
-        </ul>
-      </nav>
-      <Routes>
-        <Route path={'/'} element={<Home/>}/>
-        <Route path={'/users'} element={<UsersOverview/>}/>
-        <Route path={'/add-user'} element={<AddUser/>}/>
-        <Route path={'/contact'} element={<Contact/>}/>
-        <Route path={'*'} element={<NotFound/>}/>
-      </Routes>
-    </BrowserRouter>
-  )
+    return (
+        <BrowserRouter>
+            <Navigation/>
+            <div id="container">
+                <Routes>
+                    <Route path={'/'} element={<Home/>}/>
+                    <Route path={'/users'} element={<UsersOverview/>}/>
+                    <Route path={'/add-user'} element={<AddUser/>}/>
+                    <Route path={'/users/:id'} element={<EditUser/>}/>
+                    <Route path={'/contact'} element={<Contact/>}/>
+                    <Route path={'*'} element={<NotFound/>}/>
+                </Routes>
+            </div>
+        </BrowserRouter>
+    )
 }
 
 export default App
