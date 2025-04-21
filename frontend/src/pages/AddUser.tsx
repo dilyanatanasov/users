@@ -1,9 +1,10 @@
-import {useForm} from "react-hook-form";
+import {FormProvider, useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
+import {Form} from "../components/Form.tsx";
 
 export const AddUser = () => {
     const navigation = useNavigate();
-    const { register, handleSubmit } = useForm();
+    const methods = useForm();
 
     const onSubmit = async (data) => {
         try {
@@ -23,15 +24,9 @@ export const AddUser = () => {
     return (
         <>
             <h1>AddUser</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input type={'text'} placeholder={'Username'} {...register('username')}/>
-                <input type={'password'} placeholder={'Password'} {...register('password')}/>
-                <ul>
-                    <li><input type={'radio'} value={1} {...register('isActive')}/>Active</li>
-                    <li><input type={'radio'} value={0} {...register('isActive')}/>Inactive</li>
-                </ul>
-                <button type={'submit'}>Add user</button>
-            </form>
+            <FormProvider {...methods}>
+                <Form onSubmit={onSubmit} submitButtonLabel={'Add user'}/>
+            </FormProvider>
         </>
     )
 }

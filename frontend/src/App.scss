@@ -12,7 +12,7 @@ nav {
     display: flex;
     gap: 10px;
     list-style: none;
-    padding: 10px 0;
+    padding: 10px 5px;
 
     li {
       padding: 5px 10px;
@@ -23,6 +23,7 @@ nav {
       }
 
       a {
+        font-size: 20px;
         text-decoration: none;
         color: #ffffff;
       }
@@ -32,21 +33,21 @@ nav {
 }
 
 #container {
-  margin: 10px 10px;
+  padding: 10px 15px;
   display: flex;
   gap: 10px;
   flex-direction: column;
-  width: 100%;
   height: 75vh;
 
   button {
     background-color: #facd60;
     border: none;
     border-radius: 10px;
-    padding: 5px;
+    padding: 10px 5px;
     color: black;
     cursor: pointer;
-    max-height: 30px;
+    max-height: 40px;
+    font-size: 20px;
 
     &:hover {
       background-color: #fb7756;
@@ -55,12 +56,23 @@ nav {
 
   h1 {
     margin-bottom: 10px;
+    font-size: 30px;
   }
 
   form {
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    input {
+      padding: 10px 5px;
+    }
+
+    ul {
+      li {
+        font-size: 16px;
+      }
+    }
   }
 
   ul {
@@ -73,7 +85,12 @@ nav {
     li {
       display: flex;
       width: 100%;
+      align-items: center;
       justify-content: space-between;
+
+      & span {
+        font-size: 20px;
+      }
 
       & .actions {
         display: flex;

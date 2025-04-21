@@ -1,13 +1,13 @@
 import {useNavigate, useParams} from "react-router-dom";
-import {useForm} from "react-hook-form";
-import {useEffect, useState} from "react";
+import {FormProvider, useForm} from "react-hook-form";
+import {useEffect} from "react";
+import {Form} from "../components/Form.tsx";
 
 export const EditUser = () => {
     const navigation = useNavigate();
-    const { register, handleSubmit, reset } = useForm();
+    const methods = useForm();
+    const { reset } = methods;
     const { id } = useParams();
-
-    const [user, setUser] = useState<any>(null);
 
     const getUser = async (id: string) => {
         const response = await fetch(`http://localhost:3000/user/${id}`)
@@ -18,12 +18,11 @@ export const EditUser = () => {
             isActive: data.is_active ? "1" : "0"
         }
         reset(formattedUser);
-        setUser(data);
     }
 
     useEffect(() => {
         (async () => {
-            await getUser(id);
+            await getUser(id!);
         })()
     }, []);
 
@@ -45,15 +44,9 @@ export const EditUser = () => {
     return (
         <>
             <h1>Edit user</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input type={'text'} placeholder={'Username'} {...register('username')}/>
-                <input type={'password'} placeholder={'Password'} {...register('password')}/>
-                <ul>
-                    <li><input type={'radio'} value={1} {...register('isActive')}/>Active</li>
-                    <li><input type={'radio'} value={0} {...register('isActive')}/>Inactive</li>
-                </ul>
-                <button type={'submit'}>Edit user</button>
-            </form>
+            <FormProvider {...methods}>
+                <Form onSubmit={onSubmit} submitButtonLabel={'Edit user'}/>
+            </FormProvider>
         </>
     )
 }
