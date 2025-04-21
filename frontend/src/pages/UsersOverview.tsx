@@ -34,12 +34,14 @@ export const UsersOverview: FC = () => {
                 return (
                     <>
                         <span>{user.username}</span>
-                        <Button text={'Edit'} onClick={() => editUser(user.id)} />
-                        <Button text={'Delete'} onClick={() => deleteUser(user.id)} />
+                        <div className={'actions'}>
+                            <Button text={'Edit'} onClick={() => editUser(user.id)}/>
+                            <Button text={'Delete'} onClick={() => deleteUser(user.id)}/>
+                        </div>
                     </>
                 )
-            }} />
-            <Button text={'Get Users'} onClick={getUsers} />
+            }}/>
+            <Button text={'Get Users'} onClick={getUsers}/>
         </>
     )
 }

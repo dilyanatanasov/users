@@ -34,6 +34,8 @@ nav {
 #container {
   margin: 10px 10px;
   display: flex;
+  gap: 10px;
+  flex-direction: column;
   width: 100%;
   height: 75vh;
 
@@ -66,10 +68,17 @@ nav {
     flex-direction: column;
     list-style: none;
     gap: 10px;
+    width: 200px;
 
     li {
       display: flex;
-      gap: 10px;
+      width: 100%;
+      justify-content: space-between;
+
+      & .actions {
+        display: flex;
+        gap: 20px;
+      }
     }
   }
 }
